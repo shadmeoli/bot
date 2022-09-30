@@ -1,67 +1,63 @@
 <template>
   <!-- Filter -->
-	<div>
-		<v-col>
-
-			<v-row>
-				<v-card
-    class="mx-auto"
-    max-width="344"
-  >
-    <v-img
-      src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-      height="200px"
-    ></v-img>
-
-    <v-card-title>
-      Top western road trips
-    </v-card-title>
-
-    <v-card-subtitle>
-      1,000 miles of wonder
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-        color="orange lighten-2"
-        text
-      >
-        Explore
-      </v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
+  <div style="{display: flex; align-items:center; position:relative; left: 11%;}" class="mt-15 ml-10">
+    <v-btn dark icon @click="show = !show">
+      <v-chip color="red magenta-3 " class="ml-10">
+        <span>order</span>
+        <v-icon color="black">{{ show ? 'mdi-food-fork-drink' : 'mdi-chat' }}</v-icon>
+      </v-chip>
+    </v-btn>
 
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
 
-        <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
+        <v-card max-width="70%">
+          <v-card-title class="ml-2">
+            Talk to me
+          </v-card-title>
+          <v-card-subtitle class="ml-2">
+            FAQs ?
+          </v-card-subtitle>
+
+
+          <v-chip>{{ msg }}</v-chip>
+
+
+          <v-card-actions>
+            <v-text-field v-model="mine" @input="talkToMe()">
+            </v-text-field>
+            <v-btn v-on:click="talkToMe()" text>
+              <v-icon slot="prepend" color="red">
+                mdi-send-outline
+              </v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+
       </div>
     </v-expand-transition>
-  </v-card>
-			</v-row>
-			
-		</v-col>
-	</div>
-	
+  </div>
+
 </template>
 
 <script>
-  export default {
-    name: 'chat',
 
-    data: () => ({
+let msg;
+export default {
+  name: 'chat',
 
-    }),
+  data: () => ({
+    show: false,
+    msg: 'Hello there.',
+    sent: false,
+    mine: '',
+  }),
+
+  methods: {
+    talkToMe() {
+      this.mine = this.mine;
+    }
   }
+}
 </script>

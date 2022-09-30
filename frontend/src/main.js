@@ -8,7 +8,7 @@ import axios from 'axios'
 
 // connection to the fast API
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:5000/';
+axios.defaults.baseURL = 'http://localhost:8000/';
 
 Vue.config.productionTip = false
 
