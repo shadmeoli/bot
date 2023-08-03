@@ -24,9 +24,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class ChatValues(BaseModel):
     message: str
-    
+
     class Config:
         json_schema_extra = {
             "post_demo": {
