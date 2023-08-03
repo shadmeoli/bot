@@ -28,7 +28,7 @@ class ChatValues(BaseModel):
     message: str
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "post_demo": {
                 "message": "<! some user specifie message>",
             }
