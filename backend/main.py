@@ -26,11 +26,7 @@ app.add_middleware(
 
 class ChatValues(BaseModel):
     message: str
-
-    @validator('message')
-    def validate_message(cls, value):
-        ...
-
+    
     class Config:
         json_schema_extra = {
             "post_demo": {
