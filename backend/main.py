@@ -2,10 +2,10 @@ import logging
 from datetime import datetime
 
 import uvicorn
-from pydantic import BaseModel
 from fastapi import FastAPI, status
 from fastapi.exceptions import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, validator, ValidationError
 
 
 app = FastAPI(
@@ -27,6 +27,10 @@ app.add_middleware(
 class ChatValues(BaseModel):
     message: str
 
+    @validator('message')
+    def validate_message(cls, value):
+        ...
+
     class Config:
         json_schema_extra = {
             "post_demo": {
@@ -36,7 +40,7 @@ class ChatValues(BaseModel):
 
 
 @app.post('/api/v1/chat', status_code=status.HTTP_200_OK)
-async def chat():
+async def chat(packet: ChatValues):
     
     raise HTTPException(
         detail="Endpoint not implemented", 
