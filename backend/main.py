@@ -24,9 +24,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+class ChatValues(BaseModel):
+    message: str
+
+    class Config:
+        schema_extra = {
+            "post_demo": {
+                "message": "<! some user specifie message>",
+            }
+        }
+
 
 @app.post('/api/v1/chat', status_code=status.HTTP_200_OK)
 async def chat():
+    
     raise HTTPException(
         detail="Endpoint not implemented", 
         status_code=status.HTTP_501_NOT_IMPLEMENTED
