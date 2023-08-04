@@ -7,7 +7,8 @@ from fastapi.exceptions import HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, validator, ValidationError
 
-# from . import bot
+from bot import get_response
+from backend.bot import responses
 
 
 app = FastAPI(
@@ -40,9 +41,15 @@ class ChatValues(BaseModel):
 
 @app.post("/api/v1/chat", status_code=status.HTTP_200_OK)
 async def chat(packet: ChatValues):
-    raise HTTPException(
-        detail="Endpoint not implemented", status_code=status.HTTP_501_NOT_IMPLEMENTED
-    )
+    try:
+        response = get_response(packet.message)
+        response_data = dict(bot=response, created_at=datetime.now())
+
+        return response_data
+
+    except Exception as error:
+        logging.error(error)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 if __name__ == "__main__":
