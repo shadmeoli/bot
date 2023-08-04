@@ -8,7 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, validator, ValidationError
 
 from bot import get_response
-from backend.bot import responses
 
 
 app = FastAPI(
