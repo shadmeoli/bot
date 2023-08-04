@@ -11,18 +11,30 @@ from bot import get_response
 
 
 app = FastAPI(
-    title="Some pet bot",
+    title="Some pet bot", # with swagger it will be displayed on the tad header 
     description="I am just extending on a pet project\nNothing sirious",
     version="0.2.0",
     redoc_url="/redoc",
     contact={"name": "Shadrack Meoli"},
 )
 
+ORIGINS = [
+    '''
+    If you want to host this and onyl accept a set of IPs
+    you can white list an array of IP that will be accepted by  
+    API when making requests.
+    
+    [!!]    BY DEFAULT I HAVE ALL ORIGIN ALLOWED [!!]
+    '''
+    "*"
+]
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[ORIGINS],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT"],
     allow_headers=["*"],
 )
 
