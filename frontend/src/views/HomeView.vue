@@ -13,9 +13,13 @@
         
         <body class="w-screen h-screen flex flex-col items-center justify-center">
           <h1 class="font-bold">Chat Window</h1>
-          <div class="bg-gray-200 h-[50%] w-[80%] p-4">
+          <div class="bg-gray-200 h-[50%] w-[80%] p-4 flex flex-col-reverse justify-end overflow-y-scroll" id="chatWindow">
             <h1 class="flex justify-center mt-40 text-4xl font-bold text-gray-300">Chats will apper here ...</h1>
+            <div class="mb-4">User: Hello!</div>
+            <div class="mb-4">Bot: Hi there!</div>
           </div>
+
+
           <div class="flex w-[80%] h-28 bg-black p-4">
             <input class="rounded-l-xl w-[80%] h-20 bg-gray-200 px-4 font-bold text-black" placeholder="enter text here">
             <button class="h-20 w-40 bg-gradient-to-br from-red-400 to-orange-300 hover:from-red-600 hover:to-orange-500 active:from-red-400 active:to-orange-300 rounded-r-xl font-bold text-white">SEND</button>
