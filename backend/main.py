@@ -29,7 +29,6 @@ ORIGINS = [
     "*"
 ]
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[ORIGINS],
@@ -37,7 +36,6 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PUT"],
     allow_headers=["*"],
 )
-
 
 class ChatValues(BaseModel):
     message: str
