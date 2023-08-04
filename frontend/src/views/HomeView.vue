@@ -13,8 +13,8 @@
         
         <body class="w-screen h-screen flex flex-col items-center justify-center">
           <h1 class="font-bold">Chat Window</h1>
-          <div class="bg-gray-200 h-[50%] w-[80%]">
-            <h1 class="">Chats will apper here</h1>
+          <div class="bg-gray-200 h-[50%] w-[80%] p-4">
+            <h1 class="flex justify-center mt-40 text-4xl font-bold text-gray-300">Chats will apper here ...</h1>
           </div>
           <div class="flex w-[80%] h-28 bg-black p-4">
             <input class="rounded-l-xl w-[80%] h-20 bg-gray-200 px-4 font-bold text-black" placeholder="enter text here">
