@@ -4,18 +4,20 @@ import axios from 'axios';
 
 export const useChatStore = defineStore('chat', () => {
   const count = ref(0)
-  const userText = ref<string>();
+  const userText = ref<string | undefined>();
   const replies = ref<string[]>([]);
   const prompts = ref<string[]>([]);
 
-  const fetchReplies = async () => {
-
+  const fetchReplies = async (text: string) => {
     const apiEndpoint = 'http://0.0.0.0:8000/api/v1/chat';
+
+    // Check if userText.value is undefined, provide a default value (empty string) if it is
+    userText.value = text || '';
 
     try {
       // Make the API call using Axios
       const response = await axios.post(apiEndpoint, {
-        message: prompt
+        message: userText.value,
       });
 
       // Assuming your API response contains the 'bot' field with the reply text

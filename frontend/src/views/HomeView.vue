@@ -2,17 +2,19 @@
 import { ref, onMounted, computed } from 'vue'
 import { useChatStore } from '../stores/chat';
 
-const text = ref<string>();
 const chatStore = useChatStore()
+const text = ref<string>();
 const messages = ref<{ id: string; text: string; isPrompt: boolean }[]>([])
 
 const fetchReplies = async () => {
   await chatStore.fetchReplies(text.value);
+
   messages.value = [...chatStore.prompts, ...chatStore.replies].map((message, index) => ({
     id: `message_${index}`,
     text: message,
     isPrompt: index < chatStore.prompts.length,
   }))
+  text.value = ''
 }
 
 // Fetch replies when the component is mounted (optional)
