@@ -9,7 +9,7 @@ export const useChatStore = defineStore('chat', () => {
   const prompts = ref<string[]>([]);
 
   const fetchReplies = async (text: string) => {
-    const apiEndpoint = 'http://0.0.0.0:8000/api/v1/chat';
+    const apiEndpoint = 'https://shop-zetu-bot.onrender.com/api/v1/chat';
 
     // Check if userText.value is undefined, provide a default value (empty string) if it is
     userText.value = text || '';
