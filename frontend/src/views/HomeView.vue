@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useChatStore } from '../stores/chat';
 
 const chatStore = useChatStore()
-const text = ref<string>();
+const text = ref<string | undefined>();
 const messages = ref<{ id: string; text: string; isPrompt: boolean }[]>([])
 
 const fetchReplies = async () => {
-  await chatStore.fetchReplies(text.value);
+  if (text.value !== undefined) { // Fix the typo 'unefined' to 'undefined'
+    await chatStore.fetchReplies(text.value);
+  }
 
   messages.value = [...chatStore.prompts, ...chatStore.replies].map((message, index) => ({
     id: `message_${index}`,
@@ -20,6 +22,7 @@ const fetchReplies = async () => {
 // Fetch replies when the component is mounted (optional)
 onMounted(fetchReplies)
 </script>
+
 
 <template>
   <Suspense>
