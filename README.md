@@ -13,7 +13,7 @@ Here is a simple implementation of a chat bot using intents and naive bias to fi
 
 **Server:** Python- FastAPI
 
-** Model ** Python - sklearn | numpy
+**Model** Python - sklearn | numpy
 
 
 ## Run Locally
