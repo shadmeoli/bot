@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useChatStore = defineStore('chat', () => {
-  const count = ref(0)
+
   const userText = ref<string | undefined>();
   const replies = ref<string[]>([]);
   const prompts = ref<string[]>([]);
@@ -34,7 +34,6 @@ export const useChatStore = defineStore('chat', () => {
   };
 
   return {
-    count,
     replies,
     prompts,
     fetchReplies,

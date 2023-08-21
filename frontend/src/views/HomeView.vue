@@ -61,6 +61,6 @@ onMounted(fetchReplies)
         <h1>Loading ...</h1>
       </div>
     </template>
-
   </Suspense>
+
 </template>
